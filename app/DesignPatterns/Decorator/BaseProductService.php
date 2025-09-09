@@ -40,7 +40,7 @@ class BaseProductService implements ProductServiceInterface
         $product->sale_price = $request->sale_price;
         $product->SKU = $request->SKU;
         $product->stock_status = $request->stock_status;
-        $product->featured = $request->featured;
+        $product->featured = $request->featured ?? false;
         $product->quantity = $request->quantity;
     }
 }

@@ -107,6 +107,12 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
+        // Check if category has associated products
+        if ($category->products()->count() > 0) {
+            return redirect()->route('admin.categories')
+                ->with('error', 'Cannot delete this category because it has ' . $category->products()->count() . ' associated product(s). Please remove or reassign the products first.');
+        }
+
         if ($category->image && File::exists(public_path('uploads/categories/' . $category->image))) {
             File::delete(public_path('uploads/categories/' . $category->image));
         }

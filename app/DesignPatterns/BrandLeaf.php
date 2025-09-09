@@ -25,6 +25,12 @@ class BrandLeaf implements BrandComponent
 
     public function display()
     {
-        return $this->brand;
+        return [
+            'id'    => $this->brand->id,
+            'name'  => $this->brand->name,
+            'slug'  => $this->brand->slug,
+            'image' => $this->brand->image,
+            'products_count' => $this->brand->products()->count(),
+        ];
     }
 }

@@ -22,17 +22,8 @@
 
             <div class="wg-box">
                 <div class="flex items-center justify-between gap10 flex-wrap">
-                    <div class="wg-filter flex-grow">
-                        <form class="form-search">
-                            <fieldset class="name">
-                                <input type="text" placeholder="Search here..." class="" name="name" tabindex="2" value=""
-                                    aria-required="true" required="">
-                            </fieldset>
-                            <div class="button-submit">
-                                <button class="" type="submit"><i class="icon-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
+                    <div class="wg-filter flex-grow"></div>
+                    
                     <a class="tf-button style-1 w208" href="{{ route('admin.brand.add') }}"><i class="icon-plus"></i>Add
                         new</a>
                 </div>
@@ -40,6 +31,9 @@
                     <div class="table-responsive">
                         @if(Session::has('status'))
                             <p class="alert alert-success">{{ Session::get('status') }}</p>
+                        @endif
+                        @if(Session::has('error'))
+                            <p class="alert alert-danger">{{ Session::get('error') }}</p>
                         @endif
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -59,23 +53,23 @@
                                         <td>{{ $brandList->firstItem() + $loop->index }}</td>
                                         <td class="pname">
                                             <div class="image">
-                                                <img src="{{ asset('uploads/brands') }}/{{ $brand->image }}"
-                                                    alt="{{ $brand->name }}" class="image">
+                                                <img src="{{ asset('uploads/brands') }}/{{ $brand['image'] }}"
+                                                    alt="{{ $brand['name'] }}" class="image">
                                             </div>
                                             <div class="name">
-                                                <a href="#" class="body-title-2">{{ $brand->name }}</a>
+                                                <a href="#" class="body-title-2">{{ $brand['name'] }}</a>
                                             </div>
                                         </td>
-                                        <td>{{ $brand->slug }}</td>
-                                        <td><a href="#" target="_blank">0</a></td>
+                                        <td>{{ $brand['slug'] }}</td>
+                                        <td><a href="#" target="_blank">{{ $brand['products_count'] }}</a></td>
                                         <td>
                                             <div class="list-icon-function">
-                                                <a href="{{ route('admin.brand.edit', ['id' => $brand->id]) }}">
+                                                <a href="{{ route('admin.brand.edit', ['id' => $brand['id']]) }}">
                                                     <div class="item edit">
                                                         <i class="icon-edit-3"></i>
                                                     </div>
                                                 </a>
-                                                <form action="{{ route('admin.brand.delete', $brand->id) }}" method="POST"
+                                                <form action="{{ route('admin.brand.delete', $brand['id']) }}" method="POST"
                                                     style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')

@@ -32,6 +32,22 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class,'brand_id');
     }
+
+    /**
+     * Get the wishlist items for the product.
+     */
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
+
+    /**
+     * Get the users who have this product in their wishlist.
+     */
+    public function wishlistUsers()
+    {
+        return $this->belongsToMany(User::class, 'wishlists')->withTimestamps();
+    }
 }
 
 

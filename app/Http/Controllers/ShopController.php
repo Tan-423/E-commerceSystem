@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
     public function index(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
         $o_column = "";
         $o_sorting = "";
         $sorting = $request->query('sorting') ? $request->query('sorting') : -1;
@@ -59,6 +64,10 @@ class ShopController extends Controller
 
     public function product_details($product_slug)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
         $product = Product::where('slug', $product_slug)->first();
         return view('details', compact('product'));
     }

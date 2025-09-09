@@ -20,6 +20,7 @@ class CategoryLeaf extends CategoryComponent
             'name'  => $this->category->name,
             'slug'  => $this->category->slug,
             'image' => $this->category->image,
+            'products_count' => $this->category->products()->count(),
         ];
     }
 }

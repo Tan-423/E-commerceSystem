@@ -18,6 +18,7 @@
         href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Allura&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert.min.css')}}">
     <link rel="stylesheet" href="{{asset ('assets/css/plugins/swiper.min.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{asset ('assets/css/style.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{asset ('assets/css/custom.css')}}" type="text/css" />
@@ -275,7 +276,7 @@
 
             <div class="logo">
                 <a href="{{ route('home.index') }}">
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="Uomo" class="logo__image d-block" />
+                    <img src="{{ asset('images/logo/newlogo.png') }}" alt="Uomo" class="logo__image d-block" />
                 </a>
             </div>
 
@@ -396,7 +397,7 @@
             <div class="header-desk header-desk_type_1">
                 <div class="logo">
                     <a href="{{ route('home.index') }}">
-                        <img src="{{ asset('assets/images/logo.png') }}" alt="Uomo" class="logo__image d-block" />
+                        <img src="{{ asset('images/logo/newlogo.png') }}" alt="Uomo" class="logo__image d-block" />
                     </a>
                 </div>
 
@@ -411,67 +412,11 @@
                         <li class="navigation__item">
                             <a href="{{route('cart.index')}}" class="navigation__link">Cart</a>
                         </li>
-                        <li class="navigation__item">
-                            <a href="about.html" class="navigation__link">About</a>
-                        </li>
-                        <li class="navigation__item">
-                            <a href="contact.html" class="navigation__link">Contact</a>
-                        </li>
                     </ul>
                 </nav>
 
                 <div class="header-tools d-flex align-items-center">
-                    <div class="header-tools__item hover-container">
-                        <div class="js-hover__open position-relative">
-                            <a class="js-search-popup search-field__actor" href="#">
-                                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <use href="#icon_search" />
-                                </svg>
-                                <i class="btn-icon btn-close-lg"></i>
-                            </a>
-                        </div>
-
-                        <div class="search-popup js-hidden-content">
-                            <form action="#" method="GET" class="search-field container">
-                                <p class="text-uppercase text-secondary fw-medium mb-4">What are you looking for?</p>
-                                <div class="position-relative">
-                                    <input class="search-field__input search-popup__input w-100 fw-medium" type="text"
-                                        name="search-keyword" placeholder="Search products" />
-                                    <button class="btn-icon search-popup__submit" type="submit">
-                                        <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <use href="#icon_search" />
-                                        </svg>
-                                    </button>
-                                    <button class="btn-icon btn-close-lg search-popup__reset" type="reset"></button>
-                                </div>
-
-                                <div class="search-popup__results">
-                                    <div class="sub-menu search-suggestion">
-                                        <h6 class="sub-menu__title fs-base">Quicklinks</h6>
-                                        <ul class="sub-menu__list list-unstyled">
-                                            <li class="sub-menu__item"><a href="shop2.html"
-                                                    class="menu-link menu-link_us-s">New Arrivals</a>
-                                            </li>
-                                            <li class="sub-menu__item"><a href="#"
-                                                    class="menu-link menu-link_us-s">Dresses</a></li>
-                                            <li class="sub-menu__item"><a href="shop3.html"
-                                                    class="menu-link menu-link_us-s">Accessories</a>
-                                            </li>
-                                            <li class="sub-menu__item"><a href="#"
-                                                    class="menu-link menu-link_us-s">Footwear</a></li>
-                                            <li class="sub-menu__item"><a href="#"
-                                                    class="menu-link menu-link_us-s">Sweatshirt</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="search-result row row-cols-5"></div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
+                    
                     @guest
                     <div class="header-tools__item hover-container">
                         <a href="{{ route('login') }}" class="header-tools__item">
@@ -483,7 +428,7 @@
                     </div>
                     @else
                     <div class="header-tools__item hover-container">
-                        <a href="{{ Auth::user()->usertype === 'ADM' ? route('admin.index'):route('user.index') }}" class="header-tools__item">
+                        <a href="{{ Auth::user()->usertype === 'ADM' ? route('admin.index'):route('user.orders') }}" class="header-tools__item">
                         <span class="pr-6px">{{ Auth::user()->name }}</span>    
                         <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -493,14 +438,16 @@
                     </div>
                     @endguest
 
-                    <a href="wishlist.html" class="header-tools__item header-tools__cart">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                    @auth
+                    <a href="{{ route('user.wishlist') }}" class="header-tools__item header-tools__cart" title="Wishlist">
+                        <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <use href="#icon_heart" />
                         </svg>
-                        @if(Cart::instance('wishlist')->content()->count()>0)
-                        <span class="cart-amount d-block position-absolute js-cart-items-count">{{ Cart::instance('wishlist')->content()->count() }}</span>
-                        @endif
+                        <span class="wishlist-amount d-block position-absolute" id="wishlist-counter" style="display: none;">0</span>
                     </a>
+                    @endauth
 
                     <a href="{{route('cart.index')}}" class="header-tools__item header-tools__cart">
                         <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -515,7 +462,10 @@
                      <form method="POST" action="{{ route('logout') }}" id="logout-form">
                       @csrf
                          <a href="{{ route('logout') }}" class="header-tools__item"
-                          onclick="event.preventDefault();document.getElementById('logout-form').submit();"><?xml version="1.0"?><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8" stroke="#374151" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                          onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                          <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8" stroke="#374151" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                          </svg>
                         </a>
                       </form>
             
@@ -533,12 +483,12 @@
                 <div class="footer-column footer-store-info col-12 mb-4 mb-lg-0">
                     <div class="logo">
                         <a href="{{ route('home.index') }}">
-                            <img src="{{ asset('assets/images/logo.png') }}" alt="SurfsideMedia" class="logo__image d-block" />
+                            <img src="{{ asset('images/logo/newlogo.png') }}" alt="SurfsideMedia" class="logo__image d-block" />
                         </a>
                     </div>
-                    <p class="footer-address">123 Beach Avenue, Surfside City, CA 00000</p>
-                    <p class="m-0"><strong class="fw-medium">contact@surfsidemedia.in</strong></p>
-                    <p><strong class="fw-medium">+1 000-000-0000</strong></p>
+                    <p class="footer-address">19, Setapak, 53300, Kuala Lumpur, Malaysia</p>
+                    <p class="m-0"><strong class="fw-medium">contact@kakigadget.com</strong></p>
+                    <p><strong class="fw-medium">+011-36718888</strong></p>
 
                     <ul class="social-links list-unstyled d-flex flex-wrap mb-0">
                         <li>
@@ -591,7 +541,6 @@
                         <li class="sub-menu__item"><a href="about-2.html" class="menu-link menu-link_us-s">About Us</a>
                         </li>
                         <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Careers</a></li>
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Affiliates</a></li>
                         <li class="sub-menu__item"><a href="blog_list1.html" class="menu-link menu-link_us-s">Blog</a>
                         </li>
                         <li class="sub-menu__item"><a href="contact-2.html" class="menu-link menu-link_us-s">Contact
@@ -604,10 +553,8 @@
                     <ul class="sub-menu__list list-unstyled">
                         <li class="sub-menu__item"><a href="shop2.html" class="menu-link menu-link_us-s">New
                                 Arrivals</a></li>
-                        <li class="sub-menu__item"><a href="shop3.html" class="menu-link menu-link_us-s">Accessories</a>
+                        <li class="sub-menu__item"><a href="shop3.html" class="menu-link menu-link_us-s">Most Popular</a>
                         </li>
-                        <li class="sub-menu__item"><a href="shop4.html" class="menu-link menu-link_us-s">Men</a></li>
-                        <li class="sub-menu__item"><a href="shop5.html" class="menu-link menu-link_us-s">Women</a></li>
                         <li class="sub-menu__item"><a href="shop1.html" class="menu-link menu-link_us-s">Shop All</a>
                         </li>
                     </ul>
@@ -632,23 +579,10 @@
                 <div class="footer-column footer-menu mb-4 mb-lg-0">
                     <h6 class="sub-menu__title text-uppercase">Categories</h6>
                     <ul class="sub-menu__list list-unstyled">
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Shirts</a></li>
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Jeans</a></li>
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Shoes</a></li>
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Bags</a></li>
+                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Phone</a></li>
+                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Tab</a></li>
                         <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Shop All</a></li>
                     </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="container d-md-flex align-items-center">
-                <span class="footer-copyright me-auto">©2024 Surfside Media</span>
-                <div class="footer-settings d-md-flex align-items-center">
-                    <a href="privacy-policy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms-conditions.html">Terms
-                        &amp;
-                        Conditions</a>
                 </div>
             </div>
         </div>
@@ -677,18 +611,6 @@
                 </a>
             </div>
 
-            <div class="col-4">
-                <a href="{{ route('home.index') }}" class="footer-mobile__link d-flex flex-column align-items-center">
-                    <div class="position-relative">
-                        <svg class="d-block" width="18" height="18" viewBox="0 0 20 20" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <use href="#icon_heart" />
-                        </svg>
-                        <span class="wishlist-amount d-block position-absolute js-wishlist-count">3</span>
-                    </div>
-                    <span>Wishlist</span>
-                </a>
-            </div>
         </div>
     </footer>
 
@@ -698,9 +620,61 @@
     <script src="{{asset ('assets/js/plugins/jquery.min.js')}}"></script>
     <script src="{{asset ('assets/js/plugins/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset ('assets/js/plugins/bootstrap-slider.min.js')}}"></script>
+    <script src="{{asset('js/sweetalert.min.js')}}"></script>  
     <script src="{{asset ('assets/js/plugins/swiper.min.js')}}"></script>
     <script src="{{asset ('assets/js/plugins/countdown.js')}}"></script>
     <script src="{{asset ('assets/js/theme.js')}}"></script>
+    
+    <!-- Wishlist Counter Script -->
+    @auth
+    <script>
+        $(document).ready(function() {
+            // Load wishlist count on page load
+            updateWishlistCounter();
+            
+            function updateWishlistCounter() {
+                $.get('/wishlist/count')
+                    .done(function(response) {
+                        const counter = $('#wishlist-counter');
+                        if (response.count > 0) {
+                            counter.text(response.count).show();
+                        } else {
+                            counter.hide();
+                        }
+                    })
+                    .fail(function() {
+                        $('#wishlist-counter').hide();
+                    });
+            }
+            
+            // Update counter when items are added/removed from wishlist
+            $(document).on('wishlistUpdated', function() {
+                updateWishlistCounter();
+            });
+        });
+    </script>
+    
+    <style>
+        .wishlist-amount {
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            line-height: 18px;
+            text-align: center;
+            top: -5px;
+            right: -5px;
+            font-weight: 600;
+        }
+        
+        .header-tools__wishlist:hover svg {
+            color: #e74c3c;
+        }
+    </style>
+    @endauth
+    
     @stack("scripts")
 </body>
 

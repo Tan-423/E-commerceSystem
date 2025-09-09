@@ -109,11 +109,6 @@
                 </table>
 
                 <div class="cart-table-footer">
-                    <form action="#" class="position-relative bg-body">
-                        <input class="form-control" type="text" name="coupon_code" placeholder="Coupon Code">
-                        <input class="btn-link fw-medium position-absolute top-0 end-0 h-100 px-4" type="submit"
-                            value="APPLY COUPON">
-                    </form>
                     <form action="{{route('cart.empty')}}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -136,7 +131,7 @@
                                     <td>Free</td>
                                 </tr>
                                 <tr>
-                                    <th>Tax 21%</th>
+                                    <th>Tax 2%</th>
                                     <td>RM{{ Cart::instance('cart')->tax() }}</td>
                                 </tr>
                                 <tr>

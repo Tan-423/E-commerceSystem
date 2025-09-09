@@ -4,6 +4,35 @@
     .filled-heart{
         color: red;
     }
+    
+    .wishlist-btn {
+        background: rgba(255, 255, 255, 0.9) !important;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+        transition: all 0.3s ease;
+        color: #666;
+    }
+    
+    .wishlist-btn:hover {
+        background: white !important;
+        color: #e74c3c;
+        transform: scale(1.1);
+    }
+    
+    .wishlist-btn.in-wishlist {
+        color: #e74c3c;
+        background: white !important;
+    }
+    
+    .wishlist-btn svg {
+        width: 18px;
+        height: 18px;
+    }
 </style>
 <main class="pt-90">
     <section class="shop-main container d-flex pt-4 pt-xl-5">
@@ -109,7 +138,7 @@
                     <div id="accordion-filter-price" class="accordion-collapse collapse show border-0"
                         aria-labelledby="accordion-heading-price" data-bs-parent="#price-filters">
                         <input class="price-range-slider" type="text" name="price_range" value="" data-slider-min="10"
-                            data-slider-max="3000" data-slider-step="5" data-slider-value="[{{$min_price}},{{$max_price}}]"
+                            data-slider-max="7000" data-slider-step="5" data-slider-value="[{{$min_price}},{{$max_price}}]"
                             data-currency="RM" />
                         <div class="price-range__info d-flex align-items-center mt-2">
                             <div class="me-auto">
@@ -118,7 +147,7 @@
                             </div>
                             <div>
                                 <span class="text-secondary">Max Price: </span>
-                                <span class="price-range__max">RM3000</span>
+                                <span class="price-range__max">RM7000</span>
                             </div>
                         </div>
                     </div>
@@ -127,100 +156,6 @@
         </div>
 
         <div class="shop-list flex-grow-1">
-            <!--Top 3-->
-            <div class="swiper-container js-swiper-slider slideshow slideshow_small slideshow_split" data-settings='{
-                                                                                "autoplay": {
-                                                                                  "delay": 5000
-                                                                                },
-                                                                                "slidesPerView": 1,
-                                                                                "effect": "fade",
-                                                                                "loop": true,
-                                                                                "pagination": {
-                                                                                  "el": ".slideshow-pagination",
-                                                                                  "type": "bullets",
-                                                                                  "clickable": true
-                                                                                }
-                                                                              }'>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="slide-split h-100 d-block d-md-flex overflow-hidden">
-                            <div class="slide-split_text position-relative d-flex align-items-center"
-                                style="background-color: #f5e6e0;">
-                                <div class="slideshow-text container p-3 p-xl-5">
-                                    <h2
-                                        class="text-uppercase section-title fw-normal mb-3 animate animate_fade animate_btt animate_delay-2">
-                                        Women's <br /><strong>ACCESSORIES</strong></h2>
-                                    <p class="mb-0 animate animate_fade animate_btt animate_delay-5">Accessories are the
-                                        best way to
-                                        update your look. Add a title edge with new styles and new colors, or go for
-                                        timeless pieces.</p>
-                                </div>
-                            </div>
-                            <div class="slide-split_media position-relative">
-                                <div class="slideshow-bg" style="background-color: #f5e6e0;">
-                                    <img loading="lazy" src="assets/images/shop/shop_banner3.jpg" width="630"
-                                        height="450" alt="Women's accessories"
-                                        class="slideshow-bg__img object-fit-cover" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="slide-split h-100 d-block d-md-flex overflow-hidden">
-                            <div class="slide-split_text position-relative d-flex align-items-center"
-                                style="background-color: #f5e6e0;">
-                                <div class="slideshow-text container p-3 p-xl-5">
-                                    <h2
-                                        class="text-uppercase section-title fw-normal mb-3 animate animate_fade animate_btt animate_delay-2">
-                                        Women's <br /><strong>ACCESSORIES</strong></h2>
-                                    <p class="mb-0 animate animate_fade animate_btt animate_delay-5">Accessories are the
-                                        best way to
-                                        update your look. Add a title edge with new styles and new colors, or go for
-                                        timeless pieces.</p>
-                                </div>
-                            </div>
-                            <div class="slide-split_media position-relative">
-                                <div class="slideshow-bg" style="background-color: #f5e6e0;">
-                                    <img loading="lazy" src="assets/images/shop/shop_banner3.jpg" width="630"
-                                        height="450" alt="Women's accessories"
-                                        class="slideshow-bg__img object-fit-cover" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="slide-split h-100 d-block d-md-flex overflow-hidden">
-                            <div class="slide-split_text position-relative d-flex align-items-center"
-                                style="background-color: #f5e6e0;">
-                                <div class="slideshow-text container p-3 p-xl-5">
-                                    <h2
-                                        class="text-uppercase section-title fw-normal mb-3 animate animate_fade animate_btt animate_delay-2">
-                                        Women's <br /><strong>ACCESSORIES</strong></h2>
-                                    <p class="mb-0 animate animate_fade animate_btt animate_delay-5">Accessories are the
-                                        best way to
-                                        update your look. Add a title edge with new styles and new colors, or go for
-                                        timeless pieces.</p>
-                                </div>
-                            </div>
-                            <div class="slide-split_media position-relative">
-                                <div class="slideshow-bg" style="background-color: #f5e6e0;">
-                                    <img loading="lazy" src="assets/images/shop/shop_banner3.jpg" width="630"
-                                        height="450" alt="Women's accessories"
-                                        class="slideshow-bg__img object-fit-cover" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container p-3 p-xl-5">
-                    <div class="slideshow-pagination d-flex align-items-center position-absolute bottom-0 mb-4 pb-xl-2">
-                    </div>
-
-                </div>
-            </div>
 
             <div class="mb-3 pb-2 pb-xl-3"></div>
 
@@ -317,6 +252,17 @@
                                     class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium"
                                     data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
                             </form>
+                            
+                            @auth
+                            <button type="button" 
+                                    class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 wishlist-btn" 
+                                    data-product-id="{{ $product->id }}" 
+                                    title="Add to Wishlist">
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <use href="#icon_heart" />
+                                </svg>
+                            </button>
+                            @endauth
                         </div>
 
                         <div class="pc__info position-relative">
@@ -356,28 +302,6 @@
                                 <span class="reviews-note text-lowercase text-secondary ms-1">8k+ reviews</span>
                             </div>
 
-                            @if(Cart::instance('wishlist')->content()->where('id',$product->id)->count()>0)
-                            <button type="submit"
-                                    class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist filled-heart" title="Add To Wishlist">
-                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <use href="#icon_heart" />
-                                    </svg>
-                                </button>
-                            @else
-                            <form method="POST" action="{{route('wishlist.add')}}">
-                                @csrf
-                                <input type="hidden" name="id" value="{{$product->id}}" />
-                                <input type="hidden" name="name" value="{{$product->name}}" />
-                                <input type="hidden" name="price" value="{{$product->sale_price == '' ? $product->regular_price : $product->sale_price}}" />
-                                <input type="hidden" name="quantity" value="1" />
-                                <button type="submit"
-                                    class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist" title="Add To Wishlist">
-                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <use href="#icon_heart" />
-                                    </svg>
-                                </button>
-                            </form>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -410,6 +334,108 @@
             $("#sorting").val($("#sortingby option:selected").val());
             $("#frmfilter").submit();
         });
+    });
+    
+    // Wishlist functionality
+    $(document).ready(function() {
+        // Check wishlist status for all products on page load
+        @auth
+        $('.wishlist-btn').each(function() {
+            const productId = $(this).data('product-id');
+            const btn = $(this);
+            
+            $.get(`/wishlist/check/${productId}`)
+                .done(function(response) {
+                    if (response.inWishlist) {
+                        btn.addClass('in-wishlist');
+                        btn.attr('title', 'Remove from Wishlist');
+                    }
+                });
+        });
+        
+        // Handle wishlist button clicks
+        $('.wishlist-btn').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const productId = $(this).data('product-id');
+            const btn = $(this);
+            const isInWishlist = btn.hasClass('in-wishlist');
+            
+            if (isInWishlist) {
+                // Remove from wishlist
+                $.ajax({
+                    url: `/wishlist/remove/${productId}`,
+                    type: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            btn.removeClass('in-wishlist');
+                            btn.attr('title', 'Add to Wishlist');
+                            
+                            // Show success message
+                            showToast('Product removed from wishlist!', 'success');
+                            
+                            // Trigger counter update
+                            $(document).trigger('wishlistUpdated');
+                        }
+                    },
+                    error: function(xhr) {
+                        const response = xhr.responseJSON;
+                        showToast(response.message || 'Error removing from wishlist', 'error');
+                    }
+                });
+            } else {
+                // Add to wishlist
+                $.ajax({
+                    url: '/wishlist/add',
+                    type: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        product_id: productId
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            btn.addClass('in-wishlist');
+                            btn.attr('title', 'Remove from Wishlist');
+                            
+                            // Show success message
+                            showToast('Product added to wishlist!', 'success');
+                            
+                            // Trigger counter update
+                            $(document).trigger('wishlistUpdated');
+                        }
+                    },
+                    error: function(xhr) {
+                        const response = xhr.responseJSON;
+                        showToast(response.message || 'Error adding to wishlist', 'error');
+                    }
+                });
+            }
+        });
+        @endauth
+        
+        // Toast notification function
+        function showToast(message, type) {
+            const toastClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            const toast = $(`
+                <div class="alert ${toastClass} alert-dismissible fade show position-fixed" 
+                     style="top: 20px; left: 50%; transform: translateX(-50%); z-index: 9999; min-width: 300px;" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            `);
+            
+            $('body').append(toast);
+            
+            setTimeout(function() {
+                toast.alert('close');
+            }, 3000);
+        }
     });
 
     $(function() {

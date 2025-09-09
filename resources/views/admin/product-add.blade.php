@@ -187,16 +187,6 @@
                             </div>
                         </fieldset>
                         @error('stock_status')<span class="alert-danger text-center">{{ $message }}</span>@enderror
-                        <fieldset class="name">
-                            <div class="body-title mb-10">Featured</div>
-                            <div class="select mb-10">
-                                <select class="" name="featured">
-                                    <option value="0">No</option>
-                                    <option value="1">Yes</option>
-                                </select>
-                            </div>
-                        </fieldset>
-                        @error('featured')<span class="alert-danger text-center">{{ $message }}</span>@enderror
                     </div>
                     <div class="cols gap10">
                         <button class="tf-button w-full" type="submit">Add product</button>

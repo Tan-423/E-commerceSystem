@@ -43,7 +43,7 @@
             <div class="order-info">
                 <div class="order-info__item">
                     <label>Order Number</label>
-                    <span>{{$order->id}}</span>
+                    <span>{{$order->order_number}}</span>
                 </div>
                 <div class="order-info__item">
                     <label>Date</label>

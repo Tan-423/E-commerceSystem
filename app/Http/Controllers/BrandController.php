@@ -108,6 +108,12 @@ class BrandController extends Controller
     {
         $brand = Brand::findOrFail($id);
 
+        // Check if brand has associated products
+        if ($brand->products()->count() > 0) {
+            return redirect()->route('admin.brands')
+                ->with('error', 'Cannot delete this brand because it has ' . $brand->products()->count() . ' associated product(s). Please remove or reassign the products first.');
+        }
+
         if ($brand->image && File::exists(public_path('uploads/brands/' . $brand->image))) {
             File::delete(public_path('uploads/brands/' . $brand->image));
         }

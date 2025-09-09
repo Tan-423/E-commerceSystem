@@ -22,17 +22,7 @@
 
             <div class="wg-box">
                 <div class="flex items-center justify-between gap10 flex-wrap">
-                    <div class="wg-filter flex-grow">
-                        <form class="form-search" method="GET" action="{{ route('admin.categories') }}">
-                            <fieldset class="name">
-                                <input type="text" placeholder="Search here..." class="" name="name"
-                                    value="{{ request('name') }}">
-                            </fieldset>
-                            <div class="button-submit">
-                                <button class="" type="submit"><i class="icon-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
+                    <div class="wg-filter flex-grow"></div>
                     <a class="tf-button style-1 w208" href="{{ route('admin.category.add') }}">
                         <i class="icon-plus"></i>Add new
                     </a>
@@ -41,6 +31,9 @@
                     <div class="table-responsive">
                         @if(Session::has('status'))
                             <p class="alert alert-success">{{ Session::get('status') }}</p>
+                        @endif
+                        @if(Session::has('error'))
+                            <p class="alert alert-danger">{{ Session::get('error') }}</p>
                         @endif
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -66,7 +59,7 @@
                                             </div>
                                         </td>
                                         <td>{{ $category['slug'] }}</td>
-                                        <td><a href="#" target="_blank">0</a></td>
+                                        <td><a href="#" target="_blank">{{ $category['products_count'] }}</a></td>
                                         <td>
                                             <div class="list-icon-function">
                                                 <a href="{{ route('admin.category.edit', $category['id']) }}">
@@ -105,3 +98,4 @@
     </div>
 
 @endsection
+

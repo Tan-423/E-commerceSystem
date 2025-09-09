@@ -37,9 +37,11 @@ return [
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
-            'busy_timeout' => null,
-            'journal_mode' => null,
-            'synchronous' => null,
+            'busy_timeout' => 5000, // Reduced to 5 seconds for faster failure detection
+            'journal_mode' => 'WAL', // Write-Ahead Logging for better performance
+            'synchronous' => 'NORMAL', // Better balance between speed and safety
+            'temp_store' => 'MEMORY', // Store temporary tables in memory
+            'mmap_size' => 268435456, // 256MB memory mapped I/O for better performance
         ],
 
         'mysql' => [
