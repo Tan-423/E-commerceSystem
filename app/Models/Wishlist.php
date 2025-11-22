@@ -15,7 +15,7 @@ class Wishlist extends Model
     ];
 
     /**
-     * Get the user that owns the wishlist item.
+     * Get the user that owns the wishlist item
      */
     public function user()
     {
@@ -23,7 +23,7 @@ class Wishlist extends Model
     }
 
     /**
-     * Get the product associated with the wishlist item.
+     * Get the product associated with the wishlist item
      */
     public function product()
     {
