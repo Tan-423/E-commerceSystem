@@ -287,7 +287,7 @@ $(document).ready(function() {
         // Since the form will redirect, we'll handle the visual feedback
         // The item will be removed from wishlist by the server-side logic
         setTimeout(function() {
-            // Re-enable button in case of error
+            // Reenable button in case of error
             button.prop('disabled', false);
             button.html('<i class="fa fa-shopping-cart"></i>');
         }, 3000);
