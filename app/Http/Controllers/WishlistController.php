@@ -45,7 +45,16 @@ class WishlistController extends Controller
             ], 409);
         }
 
+        // Add to wishlist
+        Wishlist::create([
+            'user_id' => $user->id,
+            'product_id' => $productId
+        ]);
 
+        return response()->json([
+            'success' => true,
+            'message' => 'Product added to wishlist successfully!'
+        ]);
     }
 
     /**
