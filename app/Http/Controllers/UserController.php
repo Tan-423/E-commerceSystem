@@ -18,7 +18,7 @@ class UserController extends Controller
     public function orders()
     {
         $orders = Order::where('user_id', Auth::id())
-            ->orderBy('created_at', 'ASC')
+            ->orderBy('created_at', 'DESC')
             ->paginate(10);
 
         return view('user.orders', compact('orders'));
