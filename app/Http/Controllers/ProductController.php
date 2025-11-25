@@ -27,6 +27,7 @@ class ProductController extends Controller
 
     public function add_product()
     {
+        // Add product
         $categories = Category::select('id', 'name')->orderBy('name')->get();
         $brands = Brand::select('id', 'name')->orderBy('name')->get();
         return view('admin.product-add', compact('categories', 'brands'));
