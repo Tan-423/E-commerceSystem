@@ -284,8 +284,7 @@ $(document).ready(function() {
         button.prop('disabled', true);
         button.html('<i class="fa fa-spinner fa-spin"></i>');
         
-        // Since the form will redirect, we'll handle the visual feedback
-        // The item will be removed from wishlist by the server-side logic
+
         setTimeout(function() {
             // Re-enable button in case of error
             button.prop('disabled', false);
