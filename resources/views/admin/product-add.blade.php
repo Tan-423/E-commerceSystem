@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-    <!-- main-content-wrap -->
+    <!-- main-contents-wrap -->
     <div class="main-content-inner">
         <!-- main-content-wrap -->
         <div class="main-content-wrap">
