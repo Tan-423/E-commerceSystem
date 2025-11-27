@@ -54,7 +54,3 @@ class CartAdapter implements CartInterface
         return floatval(str_replace(',', '', Cart::instance('cart')->tax()));
     }
 }
-
-/*
-latest commit
-    */

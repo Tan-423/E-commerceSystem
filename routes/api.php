@@ -10,7 +10,6 @@ use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\OrderItemController;
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\TransactionController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,7 +20,6 @@ use App\Http\Controllers\Api\TransactionController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
