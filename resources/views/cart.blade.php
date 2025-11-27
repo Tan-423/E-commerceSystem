@@ -30,6 +30,7 @@
         </div>
         <div class="shopping-cart">
 
+            
             @if($cartItems->count() > 0)
             <div class="cart-table__wrapper">
                 <table class="cart-table">
