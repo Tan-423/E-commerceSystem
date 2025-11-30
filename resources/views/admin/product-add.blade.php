@@ -3,7 +3,7 @@
 
     <!-- main-content-wrap -->
     <div class="main-content-inner">
-        <!-- main-content-wrap -->
+        <!-- main-contents-wrap -->
         <div class="main-content-wrap">
             <div class="flex items-center flex-wrap justify-between gap20 mb-27">
                 <h3>Add Product</h3>
