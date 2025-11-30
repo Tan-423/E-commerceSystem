@@ -9,7 +9,7 @@
             <a href="javascript:void(0)" class="checkout-steps__item active">
                 <span class="checkout-steps__item-number">01</span>
                 <span class="checkout-steps__item-title">
-                    <span>Shopping Bag</span>
+                    <span>shopping Bag</span>
                     <em>Manage Your Items List</em>
                 </span>
             </a>
