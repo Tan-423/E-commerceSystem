@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class WishlistController extends Controller
 {
     /**
-     * Display the user's wishlist.
+     * Display the user's wishlist
      */
     public function index()
     {
