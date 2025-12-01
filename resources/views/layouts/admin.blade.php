@@ -168,15 +168,11 @@
                     </div>
                     <div class="main-content">
                         @yield('content')
-
-                        
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('js/bootstrap-select.min.js')}}"></script>   
@@ -185,5 +181,4 @@
     <script src="{{ asset('js/main.js')}}"></script>
     @stack('scripts')
 </body>
-
 </html>
