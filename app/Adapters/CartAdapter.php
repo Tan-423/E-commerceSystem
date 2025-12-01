@@ -55,6 +55,3 @@ class CartAdapter implements CartInterface
     }
 }
 
-/*
-latest commit
-    */
