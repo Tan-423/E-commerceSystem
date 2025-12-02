@@ -85,7 +85,7 @@ Route::middleware(['auth', AuthAdmin::class])->group(function () {
 
 });
 
-// test-email
+// test-emails
 Route::get('/test-email', function () {
     try {
         \Mail::raw('Hi, Thank You for registering', function($message) {

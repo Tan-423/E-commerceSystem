@@ -39,7 +39,7 @@ class ProductImageDecorator extends ProductDecorator
         $manager = new ImageManager(new Driver());
         $current_timestamp = Carbon::now()->timestamp;
 
-        // Main image
+        // Main images
         if ($request->hasFile('image')) {
             if ($updating) {
                 $this->deleteSingleImage($product->image);
