@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function __construct()
     {
-        // Wrap base service with image decorato
+        // Wrap base service with image decorator
         $this->service = new ProductImageDecorator(new BaseProductService());
     }
 
